@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Dmitry Orlov <doll-tongs3d@icloud.com>">
+    <meta name="Description" content="shortuuid is a concise, unambiguous, URL-safe UUIDs. Often, one needs to use non-sequential IDs in places where users will see them, but the IDs must be as concise and easy to use as possible. shortuuid solves this problem by generating uuids using Python's built-in uuid module and then translating them to base57 using lowercase and uppercase letters and digits, and removing similar-looking characters such as l, 1, I, O and 0.">
+    <meta name="Keywords" content="shortuuid, online converter">
+
+    <title>ShortUUID Online converter</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+<body>
+    <a class="forkme hidden-xs" href="https://github.com/skorokithakis/shortuuid">
+        <img src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ShortUUID</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Converter</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Content Section -->
+    <section id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="section-heading">ShortUUID</h1>
+                    <p class="lead section-lead">
+                        <a href="https://github.com/skorokithakis/shortuuid" target="_blank">shortuuid</a>
+                        is a <a href="https://pypi.python.org/pypi/shortuuid" target="_blank">simple python library</a> that
+                        generates concise, unambiguous, URL-safe UUIDs.
+                    </p>
+
+                    <form>
+                        <div class="form-group">
+                            <label for="shortuuid">ShortUUID</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="shortuuid"
+                                   name="shortuuid"
+                                   placeholder="Enter a ShortUUID to decode or leave empty to encode a UUID"
+                            >
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="legacy-checkbox">
+                                Use legacy shortuuid format (for UUIDs encoded with versions < 1.0.0)
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="longuuid">UUID</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="longuuid"
+                                   name="uuid"
+                                   placeholder="Enter a UUID to encode or leave empty to decode a ShortUUID"
+                            >
+                        </div>
+
+                        <div class="action-buttons">
+                            <button type="button" class="btn btn-primary" id="generate-shortuuid">
+                                Generate Random ShortUUID
+                            </button>
+                            <button type="button" class="btn btn-primary" id="generate-uuid">
+                                Generate Random UUID
+                            </button>
+                            <button type="button" class="btn btn-default" id="clear-all">
+                                Clear All
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="error-message" class="alert alert-danger" style="display: none; margin-top: 20px;">
+                        <strong>Error:</strong> <span id="error-text"></span>
+                    </div>
+
+                    <div id="info-message" class="alert alert-info" style="display: none; margin-top: 20px;">
+                        <strong>Info:</strong> <span id="info-text"></span>
+                    </div>
+
+                    <p class="section-paragraph">
+                        Often, one needs to use non-sequential IDs in places where users will
+                        see them, but the IDs must be as concise and easy to use as possible. shortuuid solves this
+                        problem by generating uuids using Python's built-in uuid module and then translating them to
+                        base57 using lowercase and uppercase letters and digits, and removing similar-looking
+                        characters such as l, 1, I, O and 0.
+                    </p>
+
+                    <div class="panel panel-default" style="margin-top: 30px;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Features</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li><strong>URL-safe:</strong> No special characters that need encoding</li>
+                                <li><strong>Unambiguous:</strong> Excludes similar-looking characters (l, 1, I, O, 0)</li>
+                                <li><strong>Compact:</strong> ~22 characters instead of 36 for standard UUIDs</li>
+                                <li><strong>Legacy support:</strong> Compatible with older versions</li>
+                                <li><strong>Bidirectional:</strong> Convert between UUID and ShortUUID formats</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                   <p>
+                        This site is not affiliated with the
+                        <a href="https://github.com/skorokithakis/shortuuid" target="_blank">
+                            ShortUUID library</a>, it's created and run by
+                        <a href="https://github.com/mosquito" target="_blank">
+                            @mosquito</a>.
+                    </p>
+                    <p>
+                        This site is working on direct JS port of shortuuid python library.
+                        You can find the source code of this site
+                        <a href="https://github.com/mosquito/shortuuid.com">here</a>.
+                        The js port is available at MIT license.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-muted">Copyright &copy; shortuuid.com
+                      <script>document.write(new Date().getFullYear());</script></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="/js/vendor.min.js"></script>
+    <script src="/js/shortuuid.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
